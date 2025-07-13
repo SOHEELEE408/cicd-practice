@@ -22,6 +22,8 @@ RUN ls -l /usr/local/lib
 
 RUN echo ${VERSION} > /usr/local/lib/version
 RUN cat /usr/local/lib/version
+RUN ls -l /usr/local/lib
+RUN echo /usr/local/lib/version
 
 #ENTRYPOINT java -Dspring.profiles.active="${ACTIVE_PROFILE}" -Dfile.encoding="${ENCODING}" -Dserver.port=${PORT_NUM} -jar -Xms${HEAP_MEMORY}M -Xmx${HEAP_MEMORY}M /usr/local/lib/app.jar
 ENTRYPOINT java \
