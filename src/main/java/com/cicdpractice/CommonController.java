@@ -16,7 +16,8 @@ public class CommonController {
     @GetMapping("/info/version")
     String getVersion() throws IOException {
         File file = new File(
-                        Objects.requireNonNull(this.getClass().getResource("/usr/local/lib/version")).getPath()
+                "/usr/local/lib/version"
+                        //Objects.requireNonNull(this.getClass().getResource("/version")).getPath()
         );
         return FileUtils.readFileToString(file, "UTF-8");
     }
