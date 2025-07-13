@@ -41,7 +41,6 @@ env:
                                                # file, e.g. .aws/task-definition.json
   CONTAINER_NAME: ${{ secrets.CONTAINER_NAME }}${{ github.ref_name }}           # set this to the name of the container in the
                                                # containerDefinitions section of your task definition
-  PORT_NUM: 8080
 
 permissions:
   contents: read
@@ -80,13 +79,15 @@ jobs:
       env:
         ECR_REGISTRY: ${{ env.ECR_REPOSITORY }}
         IMAGE_TAG: ${{ env.IMAGE_TAG }}
+        PORT_NUM: 8080
+        HEAP_MEMORY: 1024
       run: |
         # Build a docker container and
         # push it to ECR so that it can
         # be deployed to ECS.
         docker build \
-                --build-arg HEAP_MEMORY=${HEAP_MEMORY} \
-                --build-arg PORT_NUM=${PORT_NUM} \
+                --build-arg HEAP_MEMORY=$HEAP_MEMORY \
+                --build-arg PORT_NUM=$PORT_NUM \
                 --build-arg VERSION_INFO=$IMAGE_TAG \ 
                 -t $ECR_REGISTRY:$IMAGE_TAG .
         docker push $ECR_REGISTRY:$IMAGE_TAG
