@@ -16,7 +16,7 @@ ARG PORT_NUM
 ENV PORT_NUM $PORT_NUM
 
 #COPY "${JAR_PATH}" "/usr/local/lib/app.jar"
-COPY build/libs/*.jar "/usr/local/lib/app.jar"
+COPY build/libs/*.jar /usr/local/lib/app.jar
 
 RUN echo ${VERSION} > /usr/local/lib/version
 RUN cat /usr/local/lib/version
