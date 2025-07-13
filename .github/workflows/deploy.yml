@@ -112,7 +112,7 @@ jobs:
         IMAGE_URI="${{ env.ECR_REPOSITORY }}:${IMAGE_TAG}"
         CONTAINER_DEF=$(jq --arg image "$IMAGE_URI" '.[] | .image = $image' container-definitions.json)
         aws ecs register-task-definition \
-        --family ${{ env.TASK_DEFINITION }} \
+        --family ${{ env.ECS_TASK_DEFINITION }} \
         --network-mode awsvpc \
         --requires-compatibilities FARGATE \
         --cpu "512" \
