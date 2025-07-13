@@ -1,8 +1,8 @@
 [
   {
     "name": "practice-api-develop",
-    "image": "", // workflow에서 채울 부분
-    "cpu": 0, // workflow에서 채울 부분
+    "image": "",
+    "cpu": 0,
     "portMappings": [
       {
         "name": "practice-api-develop-8080-tcp",
