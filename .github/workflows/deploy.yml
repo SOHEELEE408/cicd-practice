@@ -108,7 +108,7 @@ jobs:
     - name: Create new Task Definition revision
       id: task-def
       run: |
-        IMAGE_TAG= ${{ env.IMAGE_TAG }}
+        IMAGE_TAG=${{ env.IMAGE_TAG }}
         IMAGE_URI="${{ env.ECR_REPOSITORY }}:${IMAGE_TAG}"
         CONTAINER_DEF=$(jq --arg image "$IMAGE_URI" '.[] | .image = $image' container-definitions.json)
         aws ecs register-task-definition \
