@@ -22,10 +22,4 @@ RUN echo ${VERSION} > /usr/local/lib/version
 RUN cat /usr/local/lib/version
 
 #ENTRYPOINT java -Dspring.profiles.active="${ACTIVE_PROFILE}" -Dfile.encoding="${ENCODING}" -Dserver.port=${PORT_NUM} -jar -Xms${HEAP_MEMORY}M -Xmx${HEAP_MEMORY}M /usr/local/lib/app.jar
-ENTRYPOINT ["sh", "-c", "java \
-             -Dfile.encoding=\"${ENCODING}\" \
-             -Dserver.port=${PORT_NUM} \
-             -Xms${HEAP_MEMORY}M \
-             -Xmx${HEAP_MEMORY}M \
-             -jar /usr/local/lib/app.jar"
-]
+ENTRYPOINT ["sh", "-c", "java -Dfile.encoding=\"${ENCODING}\" -Dserver.port=${PORT_NUM} -Xms${HEAP_MEMORY}M -Xmx${HEAP_MEMORY}M -jar /usr/local/lib/app.jar"]
