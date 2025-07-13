@@ -86,6 +86,9 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew clean build && mv build/libs/cicd-practice-0.0.1-SNAPSHOT.jar build/libs/app.jar
 
+    - name: Check jar file
+      run: ls -l build/libs
+
     - name: Build, tag, and push image to Amazon ECR
       id: build-image
       env:
