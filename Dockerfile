@@ -16,10 +16,10 @@ ARG PORT_NUM
 ENV PORT_NUM $PORT_NUM
 
 #COPY "${JAR_PATH}" "/usr/local/lib/app.jar"
-COPY build/libs/*.jar /usr/local/lib/app.jar
+#COPY build/libs/*.jar /usr/local/lib/app.jar
 
-RUN echo ${VERSION} > /usr/local/lib/version
-RUN cat /usr/local/lib/version
+RUN echo ${VERSION} > build/libs/version
+RUN cat build/libs/version
 
 #ENTRYPOINT java -Dspring.profiles.active="${ACTIVE_PROFILE}" -Dfile.encoding="${ENCODING}" -Dserver.port=${PORT_NUM} -jar -Xms${HEAP_MEMORY}M -Xmx${HEAP_MEMORY}M /usr/local/lib/app.jar
 ENTRYPOINT java \
@@ -27,4 +27,4 @@ ENTRYPOINT java \
   -Dserver.port=${PORT_NUM} \
   -Xms${HEAP_MEMORY}M \
   -Xmx${HEAP_MEMORY}M \
-  -jar /usr/local/lib/app.jar
+  -jar build/libs/app.jar
